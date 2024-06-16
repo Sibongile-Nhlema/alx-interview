@@ -23,6 +23,6 @@ def minOperations(n):
         while (n % divisor == 0):
             number_of_operations += divisor
             n //= divisor
-        divisor
+        divisor += 1
 
     return number_of_operations
