@@ -23,7 +23,6 @@ def print_statistics():
     print(f"File size: {total_size}")
     for code in sorted(status_code_counts.keys()):
         print(f"{code}: {status_code_counts[code]}")
-    print()
 
 
 try:
