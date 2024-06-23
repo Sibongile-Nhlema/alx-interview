@@ -12,7 +12,16 @@ log_line_regex = (
 )
 
 total_size = 0
-status_code_counts = {}
+status_code_counts = {
+    200: 0,
+    301: 0,
+    400: 0,
+    401: 0,
+    403: 0,
+    404: 0,
+    405: 0,
+    500: 0,
+}
 
 
 def print_statistics():
@@ -21,7 +30,8 @@ def print_statistics():
     '''
     print(f"File size: {total_size}")
     for code in sorted(status_code_counts.keys()):
-        print(f"{code}: {status_code_counts[code]}")
+        if status_code_counts[code] > 0:
+            print(f"{code}: {status_code_counts[code]}")
 
 
 try:
