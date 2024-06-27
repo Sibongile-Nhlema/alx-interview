@@ -50,18 +50,17 @@ def validUTF8(data):
 
         else:
             return False
-        
+
         # Check if there are enough bytes left in data
         if i + nbytes > len(data):
             return False
-        
+
         # Validate the sequence
         for j in range(1, nbytes):
             if (data[i + j] & (1 << 7) | (1 << 6)) != (1 << 7):
                 return False
-        
+
         # Move to the next character
         i += nbytes
-    
-    return True
 
+    return True
