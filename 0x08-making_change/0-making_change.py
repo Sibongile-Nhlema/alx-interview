@@ -5,16 +5,16 @@ Module for the making change problem
 
 
 def makeChange(coins, total):
-    '''
-    Determines the fewest number of coins needed
-    to meet a given amount total.
+    """
+    Determines the fewest number of coins needed to meet a given amount total.
+    
     Args:
         coins (list): List of coin values.
         total (int): total amount given.
+    
     Returns:
-        int: Fewest number of coins needed to meet
-        the total, or -1 if it cannot be met.
-    '''
+        int: Fewest number of coins needed to meet the total, or -1 if it cannot be met.
+    """
     if total <= 0:
         return 0
 
@@ -24,9 +24,7 @@ def makeChange(coins, total):
 
     for coin in coins:
         for amount in range(coin, total + 1):
-            min_coins[amount] = min(min_coins[amount],
-                                    min_coins[amount - coin] + 1)
+            if min_coins[amount - coin] != float('inf'):
+                min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
 
-    result = min_coins[total] if min_coins[total] != float('inf') else -1
-
-    return result
+    return min_coins[total] if min_coins[total] != float('inf') else -1
