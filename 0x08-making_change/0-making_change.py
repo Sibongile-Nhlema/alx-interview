@@ -27,6 +27,14 @@ def makeChange(coins, total):
             min_coins[amount] = min(min_coins[amount],
                                     min_coins[amount - coin] + 1)
 
-    result = min_coins[total] if min_coins[total] != float('inf') else -1
+    return min_coins[total] if min_coins[total] != float('inf') else -1
 
-    return result
+
+if __name__ == "__main__":
+    import sys
+    makeChange = __import__('0-making_change').makeChange
+
+    coins = []
+    for i in range(1, 1000, 7):
+        coins.append(i)
+    print(makeChange(coins, 16576))
