@@ -18,13 +18,16 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
+    # Sort coins in descending order for potential optimization
+    coins.sort(reverse=True)
+
     # Initialize the min_coins list with infinity value (highest)
     min_coins = [float('inf')] * (total + 1)
     min_coins[0] = 0
 
     for coin in coins:
         for amount in range(coin, total + 1):
-            min_coins[amount] = min(min_coins[amount],
-                                    min_coins[amount - coin] + 1)
+            if min_coins[amount - coin] + 1 < min_coins[amount]:
+                min_coins[amount] = min_coins[amount - coin] + 1
 
     return min_coins[total] if min_coins[total] != float('inf') else -1
