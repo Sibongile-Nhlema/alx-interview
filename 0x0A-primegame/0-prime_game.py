@@ -5,7 +5,7 @@ where you remove prime numbers and their multiples
 from a list of numbers.
 '''
 
-def sieve_of_eratosthenes(max_n: int) -> list[bool]:
+def sieve_of_eratosthenes(max_n):
     '''
     Generates prime numbers up to max_n
     using the Sieve of Eratosthenes.
@@ -21,7 +21,7 @@ def sieve_of_eratosthenes(max_n: int) -> list[bool]:
     return sieve
 
 
-def isWinner(x: int, nums: list[int]) -> str | None:
+def isWinner(x, nums):
     '''
     Determines the winner of the game.
     '''
