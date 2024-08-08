@@ -5,6 +5,7 @@ where you remove prime numbers and their multiples
 from a list of numbers.
 '''
 
+
 def sieve_of_eratosthenes(max_n):
     '''
     Generates prime numbers up to max_n
