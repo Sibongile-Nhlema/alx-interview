@@ -5,7 +5,10 @@ where you remove prime numbers and their multiples
 from a list of numbers.
 '''
 
-def sieve_of_eratosthenes(max_n):
+from typing import List, Optional
+
+
+def sieve_of_eratosthenes(max_n: int) -> List[bool]:
     '''
     Generates prime numbers up to max_n
     using the Sieve of Eratosthenes.
@@ -18,11 +21,10 @@ def sieve_of_eratosthenes(max_n):
             for j in range(i * i, max_n + 1, i):
                 sieve[j] = False
 
-    primes = [i for i in range(2, max_n + 1) if sieve[i]]
     return sieve
 
 
-def isWinner(x, nums):
+def isWinner(x: int, nums: List[int]) -> Optional[str]:
     '''
     Determines the winner of the game.
     '''
@@ -39,16 +41,16 @@ def isWinner(x, nums):
         if n == 1:
             ben_wins += 1
             continue
-        
+
         count = 0
         sieve_copy = sieve[:n + 1]
-        
+
         for i in range(2, n + 1):
             if sieve_copy[i]:
                 count += 1
                 for j in range(i, n + 1, i):
                     sieve_copy[j] = False
-        
+
         if count % 2 == 1:
             maria_wins += 1
         else:
@@ -60,4 +62,3 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return None
-
