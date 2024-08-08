@@ -4,21 +4,15 @@ This module helps find out who wins a game
 where you remove prime numbers and their multiples
 from a list of numbers.
 '''
-#!/usr/bin/python3
-'''
-Module that handles the determining the winner of a game
-based on the strategic removal of prime numbers and their
-multiples from a set of consecutive integers.
-'''
 
 
 def sieve_of_eratosthenes(max_n):
     '''
-    Generates prime numbers up to max_n
-    using the Sieve of Eratosthenes
+    Finds all prime numbers up to max_n
+    using a method called Sieve of Eratosthenes
     '''
     sieve = [True] * (max_n + 1)
-    sieve[0], sieve[1] = False, False
+    sieve[0], sieve[1] = False, False  # 0 and 1 are not primes
 
     for i in range(2, int(max_n ** 0.5) + 1):
         if sieve[i]:
@@ -33,21 +27,21 @@ def sieve_of_eratosthenes(max_n):
 def count_prime_multiples(sieve, n):
     '''
     Counts how many primes and their multiples
-    can be removed from the set 1 to n
+    can be removed from 1 to n
     '''
     count = 0
     for i in range(2, n + 1):
         if sieve[i]:
             count += 1
             for j in range(i, n + 1, i):
-                sieve[j] = False
+                sieve[j] = False  # Mark multiples as not prime
 
     return count
 
 
 def isWinner(x, nums):
     '''
-    Determines the winner of the game
+    Finds out who the winner is
     '''
     if not nums or x < 1:
         return None
